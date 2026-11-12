@@ -62,7 +62,9 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-xs text-muted-foreground">{product.brand}</p>
         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
           <span className="font-display text-xl font-semibold text-forest">{formatPrice(product.price)}</span>
-          <EcoBadge score={product.ecoScore} size="sm" showLabel={false} className={product.ecoScore ? "" : "hidden"} />
+          {product.sustainability && (
+            <span className="text-xs font-medium text-muted-foreground">{product.sustainability.carbonKg} kg CO₂e</span>
+          )}
         </div>
         <button
           type="button"
